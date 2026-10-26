@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 
-def decay(m0 = 100000, p = (0, 0.1, 0.02), timestep = 1, nstep = 200, seed = None):
+def decay(m0 = 100000, p = (0.1, 0.02), timestep = 1, nstep = 200, seed = None):
     if not isinstance(m0, int) or m0 < 1:
             raise ValueError("m0 must be a positive integer")
     if not isinstance(nstep, int) or nstep < 1:
@@ -63,9 +63,9 @@ def decay(m0 = 100000, p = (0, 0.1, 0.02), timestep = 1, nstep = 200, seed = Non
             counts[counts == 0] = np.nan
             ax.plot(times, counts, linewidth=0.8, label=f'Run {col + 1}')
 
-        ax.plot(times, np.where(average[row] > 0, average[row], 0),
+        ax.plot(times, np.where(average[row] > 0, average[row], np.nan),
                 color='black', linewidth=2, label='Average')
-        ax.plot(times, np.where(survivorCountsTheory[row] > 0, survivorCountsTheory[row],0),
+        ax.plot(times, np.where(survivorCountsTheory[row] > 0, survivorCountsTheory[row],np.nan),
                 color='red', linestyle='--', label='Theory')
         ax.axhline(m0 / 2, color='gray', linestyle=':', label='Half population')
         if measured is not None:

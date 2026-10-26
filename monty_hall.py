@@ -2,7 +2,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
-def monteHall(k=10000, seed = None):
+def montyHall(k=10000, seed = None):
     if k <= 0 or not isinstance(k, int):
         raise ValueError("k must be a positive integer")
     rng = np.random.default_rng(seed)
@@ -49,7 +49,7 @@ def monteHall(k=10000, seed = None):
 
         
     plt.show()
-
-monteHall()
+if __name__ == "__main__":
+    montyHall(seed = 22)
     
 
